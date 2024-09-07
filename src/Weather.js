@@ -7,7 +7,6 @@ export default function Weather() {
   const [city, setCity] = useState("Milan");
   const [weatherData, getWeatherData] = useState({ ready: false });
   function displayWeatherData(response) {
-    console.log(response.data);
     getWeatherData({
       ready: true,
       currentTemperature: Math.round(response.data.temperature.current),
@@ -64,7 +63,7 @@ export default function Weather() {
             </a>
             , is open-sourced on{" "}
             <a
-              href="https://github.com/Zohre-M/weather-app-001.git "
+              href="https://github.com/Zohre-M/weather-app.git "
               target="_blank"
               rel="noreferrer"
             >
