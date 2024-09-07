@@ -1,6 +1,6 @@
 import React from "react";
 import Time from "./Time";
-
+import ReactAnimatedWeather from "react-animated-weather";
 export default function Current(props) {
   return (
     <div className="current-weather">

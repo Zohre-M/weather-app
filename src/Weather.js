@@ -69,7 +69,7 @@ export default function Weather() {
             </a>{" "}
             and hosted on{" "}
             <a
-              href="https://weather-app-001-three.vercel.app"
+              href="https://weather-app-eta-lac.vercel.app/"
               target="_blank"
               rel="noreferrer"
             >
