@@ -69,7 +69,7 @@ footer a {
   text-align: left;
 }
 
-.current-weather-data span {
+.weather-data-amount {
   color: rgb(246, 82, 130);
   font-weight: 700;
 }

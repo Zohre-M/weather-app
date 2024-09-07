@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import Current from "./Current";
 
 export default function Weather() {
   const [city, setCity] = useState("Milan");
@@ -13,6 +14,7 @@ export default function Weather() {
       currentHumidity: response.data.temperature.humidity,
       currentWindSpeed: Math.round(response.data.wind.speed),
       currentIconUrl: response.data.condition.icon_url,
+      currentTime: response.data.time,
       city: response.data.city,
     });
   }
@@ -28,6 +30,7 @@ export default function Weather() {
     event.preventDefault();
     getInfo();
   }
+
   if (weatherData.ready) {
     return (
       <div className="frame">
@@ -44,26 +47,7 @@ export default function Weather() {
           </form>
         </header>
         <main>
-          <div className="current-weather">
-            <div className="current-weather-data">
-              <h1>{weatherData.city}</h1>
-              <p>Monday 22:32, {weatherData.currentDescription}</p>
-              <p>
-                Humidity: <span>{weatherData.currentHumidity}%</span>, Wind:{" "}
-                <span>{weatherData.currentWindSpeed}km/h</span>
-              </p>
-            </div>
-            <div className="current-temperature">
-              <img
-                src={weatherData.currentIconUrl}
-                alt={weatherData.currentDescription}
-              />
-              <span className="current-temperature-amount">
-                {weatherData.currentTemperature}
-              </span>
-              <span className="unit">°C</span>
-            </div>
-          </div>
+          <Current data={weatherData} />
         </main>
         <footer>
           <p>
