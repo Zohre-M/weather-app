@@ -7,6 +7,7 @@ export default function Weather() {
   const [city, setCity] = useState("Milan");
   const [weatherData, getWeatherData] = useState({ ready: false });
   function displayWeatherData(response) {
+    console.log(response.data);
     getWeatherData({
       ready: true,
       currentTemperature: Math.round(response.data.temperature.current),
@@ -14,10 +15,12 @@ export default function Weather() {
       currentHumidity: response.data.temperature.humidity,
       currentWindSpeed: Math.round(response.data.wind.speed),
       currentIconUrl: response.data.condition.icon_url,
+      currentIcon: response.data.condition.icon,
       currentTime: response.data.time,
       city: response.data.city,
     });
   }
+
   function getInfo() {
     let apiKey = "118fe35e7ob1e1d3379dc44t5fac90b2";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&untis=metric`;

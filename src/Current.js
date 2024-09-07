@@ -1,6 +1,6 @@
 import React from "react";
 import Time from "./Time";
-import ReactAnimatedWeather from "react-animated-weather";
+import WeatherIcon from "./WeatherIcon";
 export default function Current(props) {
   return (
     <div className="current-weather">
@@ -22,10 +22,10 @@ export default function Current(props) {
         </p>
       </div>
       <div className="current-temperature">
-        <img
-          src={props.data.currentIconUrl}
-          alt={props.data.currentDescription}
-        />
+        <span className="current-icon">
+          <WeatherIcon data={props.data.currentIcon} />
+        </span>
+
         <span className="current-temperature-amount">
           {props.data.currentTemperature}
         </span>
