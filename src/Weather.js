@@ -28,7 +28,7 @@ export default function Weather() {
     event.preventDefault();
     getInfo();
   }
-  if (getWeatherData.ready) {
+  if (weatherData.ready) {
     return (
       <div className="frame">
         <header>

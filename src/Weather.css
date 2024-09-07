@@ -65,6 +65,9 @@ footer a {
   font-size: 28px;
   margin-top: 10px;
 }
+.current-weather-data {
+  text-align: left;
+}
 
 .current-weather-data span {
   color: rgb(246, 82, 130);
