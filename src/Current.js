@@ -1,6 +1,8 @@
 import React from "react";
 import Time from "./Time";
 import WeatherIcon from "./WeatherIcon";
+import TemperatureUnit from "./TemperatureUnit";
+
 export default function Current(props) {
   return (
     <div className="current-weather">
@@ -25,11 +27,7 @@ export default function Current(props) {
         <span className="current-icon">
           <WeatherIcon data={props.data.currentIcon} />
         </span>
-
-        <span className="current-temperature-amount">
-          {props.data.currentTemperature}
-        </span>
-        <span className="unit">°C</span>
+        <TemperatureUnit celsius={props.data.currentTemperature} />
       </div>
     </div>
   );

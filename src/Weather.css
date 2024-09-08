@@ -60,7 +60,11 @@ footer a {
 }
 .unit {
   font-size: 28px;
-  margin-top: 10px;
+  position: relative;
+  top: -48px;
+}
+.unit a {
+  text-decoration: none;
 }
 .current-weather-data {
   text-align: left;
@@ -106,6 +110,6 @@ footer a {
     display: block;
   }
   .current-temperature {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }
