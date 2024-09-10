@@ -98,6 +98,25 @@ footer a {
   padding-right: 8px;
   padding-top: 4px;
 }
+.weather-forecast {
+  margin-top: 30px;
+}
+.weather-forecast div {
+  padding: 5px;
+}
+.max-temp {
+  margin-right: 10px;
+  font-weight: 700;
+  color: rgb(246, 82, 130);
+}
+.min-temp {
+  color: rgb(246, 82, 130);
+}
+.day {
+  font-weight: 700;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+}
 @media (max-width: 600px) {
   .search-bar {
     width: 100%;

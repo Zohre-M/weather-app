@@ -25,7 +25,11 @@ export default function Current(props) {
       </div>
       <div className="current-temperature">
         <span className="current-icon">
-          <WeatherIcon data={props.data.currentIcon} />
+          <WeatherIcon
+            data={props.data.currentIcon}
+            size={90}
+            color={"black"}
+          />
         </span>
         <TemperatureUnit celsius={props.data.currentTemperature} />
       </div>

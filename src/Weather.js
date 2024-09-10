@@ -7,6 +7,8 @@ import WeatherForecast from "./WeatherForecast";
 export default function Weather() {
   const [city, setCity] = useState("Milan");
   const [weatherData, getWeatherData] = useState({ ready: false });
+  const [weatherForecast, getWeatherForecast] = useState({ ready: false });
+  let day = 0;
   function displayWeatherData(response) {
     getWeatherData({
       ready: true,
@@ -20,11 +22,26 @@ export default function Weather() {
       city: response.data.city,
     });
   }
+  function handleForecast(response) {
+    console.log(response);
+    getWeatherForecast({
+      ready: true,
+      maxTemperature: Math.round(response.data.daily[day].temperature.maximum),
+      minTemperature: Math.round(response.data.daily[day].temperature.minimum),
+      forecastIcon: response.data.daily[day].condition.icon,
+      forecastTime: response.data.daily[day].time,
+    });
+  }
 
   function getCurrentInfo() {
     let apiKey = "118fe35e7ob1e1d3379dc44t5fac90b2";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&untis=metric`;
     axios.get(apiUrl).then(displayWeatherData);
+  }
+  function getForecast() {
+    const apiKey = "118fe35e7ob1e1d3379dc44t5fac90b2";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleForecast);
   }
   function handleChange(event) {
     setCity(event.target.value);
@@ -32,6 +49,7 @@ export default function Weather() {
   function handleSubmit(event) {
     event.preventDefault();
     getCurrentInfo();
+    getForecast();
   }
 
   if (weatherData.ready) {
@@ -51,7 +69,7 @@ export default function Weather() {
         </header>
         <main>
           <Current data={weatherData} />
-          <WeatherForecast city={city} day={0} />
+          <WeatherForecast data={weatherForecast} />
         </main>
         <footer>
           <p>
