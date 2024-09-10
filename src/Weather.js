@@ -103,6 +103,7 @@ export default function Weather() {
     );
   } else {
     getCurrentInfo();
+    getForecast();
     return <p>loading ...</p>;
   }
 }
