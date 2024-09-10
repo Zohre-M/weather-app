@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import Current from "./Current";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather() {
   const [city, setCity] = useState("Milan");
@@ -20,7 +21,7 @@ export default function Weather() {
     });
   }
 
-  function getInfo() {
+  function getCurrentInfo() {
     let apiKey = "118fe35e7ob1e1d3379dc44t5fac90b2";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&untis=metric`;
     axios.get(apiUrl).then(displayWeatherData);
@@ -30,7 +31,7 @@ export default function Weather() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    getInfo();
+    getCurrentInfo();
   }
 
   if (weatherData.ready) {
@@ -50,6 +51,7 @@ export default function Weather() {
         </header>
         <main>
           <Current data={weatherData} />
+          <WeatherForecast city={city} day={0} />
         </main>
         <footer>
           <p>
@@ -82,7 +84,7 @@ export default function Weather() {
       </div>
     );
   } else {
-    getInfo();
+    getCurrentInfo();
     return <p>loading ...</p>;
   }
 }
