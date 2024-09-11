@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import Current from "./Current";
-import WeatherForecast from "./WeatherForecast";
+import Forecast from "./Forecast";
 
 export default function Weather() {
   const [city, setCity] = useState("Milan");
   const [weatherData, getWeatherData] = useState({ ready: false });
-  const [weatherForecast, getWeatherForecast] = useState({ ready: false });
-  let day = 0;
+  const [weatherForecast, getWeatherForecast] = useState();
+
   function displayWeatherData(response) {
     getWeatherData({
       ready: true,
@@ -23,14 +23,8 @@ export default function Weather() {
     });
   }
   function handleForecast(response) {
-    console.log(response);
-    getWeatherForecast({
-      ready: true,
-      maxTemperature: Math.round(response.data.daily[day].temperature.maximum),
-      minTemperature: Math.round(response.data.daily[day].temperature.minimum),
-      forecastIcon: response.data.daily[day].condition.icon,
-      forecastTime: response.data.daily[day].time,
-    });
+    getWeatherForecast(response.data.daily);
+    console.log(weatherForecast);
   }
 
   function getCurrentInfo() {
@@ -69,7 +63,17 @@ export default function Weather() {
         </header>
         <main>
           <Current data={weatherData} />
-          <WeatherForecast data={weatherForecast} />
+          {weatherForecast.map(function (dailyForecast, index) {
+            if (index < 5) {
+              return (
+                <div key={index}>
+                  <Forecast data={dailyForecast} className="forecast" />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
         </main>
         <footer>
           <p>
