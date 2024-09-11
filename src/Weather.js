@@ -63,17 +63,19 @@ export default function Weather() {
         </header>
         <main>
           <Current data={weatherData} />
-          {weatherForecast.map(function (dailyForecast, index) {
-            if (index < 5) {
-              return (
-                <div key={index}>
-                  <Forecast data={dailyForecast} className="forecast" />
-                </div>
-              );
-            } else {
-              return null;
-            }
-          })}
+          <div className="forecast">
+            {weatherForecast.map(function (dailyForecast, index) {
+              if (index < 5) {
+                return (
+                  <div key={index}>
+                    <Forecast data={dailyForecast} />
+                  </div>
+                );
+              } else {
+                return null;
+              }
+            })}
+          </div>
         </main>
         <footer>
           <p>

@@ -60,12 +60,8 @@ footer a {
 }
 .unit {
   font-size: 28px;
-  position: relative;
-  top: -48px;
 }
-.unit a {
-  text-decoration: none;
-}
+
 .current-weather-data {
   text-align: left;
 }
