@@ -53,7 +53,7 @@ export default function Weather() {
         </header>
         <main>
           <Current data={weatherData} />
-          <ForecastData city={city} />
+          <ForecastData city={weatherData.city} />
         </main>
         <footer>
           <p>
